@@ -1,0 +1,41 @@
+---
+# xenv.yaml
+
+apiVersion: k8s.refunc.io/v1beta3
+kind: Xenv
+metadata:
+  name: python37
+spec:
+  type: lambda
+  transport: nats
+  poolSize: 1
+  container:
+    image: lambci/lambda:python3.7
+    imagePullPolicy: IfNotPresent
+
+---
+# function.yaml
+
+apiVersion: k8s.refunc.io/v1beta3
+kind: Funcdef
+metadata:
+  name: python37-function
+spec:
+  body: https://github.com/refunc/lambda-python3.7-example/releases/download/v0.0.1/lambda.zip
+  entry: lambda_function.lambda_handler
+  hash: 553c10515b3d7abf77519eada39c744fb091fc82
+  maxReplicas: 1
+  runtime:
+    name: python37
+    timeout: 30
+
+---
+# simplehttp.yaml
+
+apiVersion: k8s.refunc.io/v1beta3
+kind: Trigger
+metadata:
+  name: http-python37-function
+spec:
+  funcName: python37-function
+  type: httptrigger

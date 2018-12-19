@@ -1,0 +1,7 @@
+apiVersion: k8s.refunc.io/v1beta3
+kind: Trigger
+metadata:
+  name: http-python37-function
+spec:
+  funcName: python37-function
+  type: httptrigger
