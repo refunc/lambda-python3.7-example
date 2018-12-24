@@ -1,7 +1,7 @@
 apiVersion: k8s.refunc.io/v1beta3
 kind: Xenv
 metadata:
-  name: python37
+  name: python3.7
 spec:
   type: lambda
   transport: nats

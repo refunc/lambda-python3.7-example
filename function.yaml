@@ -8,5 +8,5 @@ spec:
   hash: 553c10515b3d7abf77519eada39c744fb091fc82
   maxReplicas: 1
   runtime:
-    name: python37
+    name: python3.7
     timeout: 30
